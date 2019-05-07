@@ -1,0 +1,31 @@
+body{
+	padding: 20px 2%;
+}
+#logo{
+	float: left;
+}
+#search{
+	height: auto;
+}
+.search{
+	width: 70%;
+	float: left;
+}
+#logo h4{
+	line-height: 35px; 
+	margin-right: 10px;
+}
+#result{
+	height: auto;
+	margin-left: 30px;
+}
+hr{
+	margin: 30px 0px 10px;
+	size: 3px;
+}
+.main{
+	padding-top: 20px;
+}
+.content{
+	font-size: 15px;
+}
