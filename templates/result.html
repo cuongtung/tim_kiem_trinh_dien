@@ -25,11 +25,13 @@
 <hr>
 
 <div id="result">
-    <small>(<span id="count-result">{{ result.response.numFound }}</span> results in <span id="time">{{ result.responseHeader.QTime }}</span>s)</small>
+    <small>(<span id="count-result">{{ numFound }}</span> results in <span id="time">{{ time }}</span>s)</small>
     <div class="main">
-        {% for doc in result.response.docs %}
-            <h3 class="title"><a href={{ doc.url }} target="_blank">{{ doc.title }}</a></h3>
-            <p class="content">{{ doc.content[0] }}</p>
+        {% for doc in docs %}
+            <h3 class="title"><a href={{doc['url'][0]}} target="_blank">
+            {{ doc['title'][0] }}
+            </a></h3>
+            <p class="content">{{ doc['content'][0] }}</p>
         {% endfor %}
     </div>
 </div>

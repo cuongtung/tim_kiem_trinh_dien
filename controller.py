@@ -17,11 +17,13 @@ def search():
     input = request.args.get('input')
     input = "title:" + input
     query = quote(input)
-    api = "http://localhost:8983/solr/it4853-1/select?q=" + query
+    api = "http://localhost:8990/solr/mycore/select?q=" + query
     r = requests.get(api)
-    result = r.json()
-    # result = json.loads(result)
-    return render_template("result.html", result=result)
+    # result = r.json()
+    r = json.dumps(r.json())
+    result = json.loads(r)
+    # return render_template("result.html",result=result['response']['numFound'])
+    return render_template("result.html", numFound=result['response']['numFound'], time=result['responseHeader']['QTime'],docs=result['response']['docs'])
 
 if __name__ == "__main__":
     app.run()
