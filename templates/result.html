@@ -12,12 +12,15 @@
 		<div id="logo">
 			<h4>Logo</h4>
 		</div>
-		<div class="input-group mb-3 search">
-			<input type="text" class="form-control" placeholder=Search aria-label="Recipient's username" aria-describedby="basic-addon2" id="query">
-			<div class="input-group-append">
-				<a href="result.html"><button class="btn btn-success" id="btn-search">Search</button></a> 
+		<form action="/search" method="get" accept-charset="utf-8">
+			<div class="input-group mb-3 search">
+				<input type="text" class="form-control" placeholder=Search aria-label="Recipient's username" aria-describedby="basic-addon2" id="query" name="input">
+				<div class="input-group-append">
+					<button class="btn btn-success" id="btn-search" type="submit">Search</button>
+				</div>
 			</div>
-		</div>
+		</form>
+		
 		<div style="clear: both"></div>
 	</div>
 	<hr>
@@ -25,8 +28,12 @@
 	<div id="result">
 		<small>(<span id="count-result">1000</span> results in <span id="time">0.00001</span>s)</small>
 		<div class="main">
-			<h3 class="title"><a href="">Title</a></h3>
-			<p class="content">{{input}}</p>
+			{% import json %}
+			{% for res in result %}
+
+			<h3 class="title"><a href="">{{res[title]}}</a></h3>
+			<p class="content">{{res[content]}}</p>
+			{% endfor %}
 		</div>
 	</div>
 	<script type="text/javascript" src="js/jquery.js"></script>
