@@ -6,7 +6,7 @@ from urllib.parse import quote
 from flask_paginate import Pagination, get_page_args
 
 app = Flask(__name__)
-items = list(range(20000))
+items = list(range(100))
 
 def get_items(offset=0, per_page=10):
     return items[offset: offset + per_page]
@@ -28,7 +28,7 @@ def search():
 
     page, per_page, offset = get_page_args(page_parameter='page',
                                            per_page_parameter='per_page')
-    total = len(result['response']['docs'])
+    total = len(items)
     pagination_users = get_items(offset=offset, per_page=per_page)
     pagination = Pagination(page=page, per_page=per_page, total=total,
                             css_framework='bootstrap4')
