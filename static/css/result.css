@@ -10,6 +10,8 @@ body{
 .search{
 	width: 70%;
 	float: left;
+	margin-top: 14px;
+	margin-left: 10px;
 }
 #logo h4{
 	line-height: 35px; 
@@ -28,4 +30,8 @@ hr{
 }
 .content{
 	font-size: 15px;
+}
+img{
+    width: 60px !important;
+    height: 60px !important;
 }

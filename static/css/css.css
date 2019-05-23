@@ -4,9 +4,10 @@ body{
 #search{
 	text-align: center;
 	width: 50%;
-	margin: 170px auto 0px;
+	margin: 100px auto 0px;
 }
 h1{
 	color: red;
 	margin-bottom: 20px;
+	margin-top: 10px;
 }

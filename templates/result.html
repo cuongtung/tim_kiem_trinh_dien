@@ -9,12 +9,12 @@
 <body>
 <div id="search">
     <div id="logo">
-        <h4>Logo</h4>
+        <img class="img img-thumbnail" src="../static/logoo.jpg">
     </div>
     <form action="/search" method="get" accept-charset="utf-8">
         <div class="input-group mb-3 search">
             <input type="text" class="form-control" placeholder=Search aria-label="Recipient's username"
-                   aria-describedby="basic-addon2" id="query" name="input">
+                   aria-describedby="basic-addon2" id="query" name="input" required value="{{query}}">
             <div class="input-group-append">
                 <button class="btn btn-success" id="btn-search" type="submit">Search</button>
             </div>
@@ -25,17 +25,49 @@
 <hr>
 
 <div id="result">
-    <small>(<span id="count-result">{{ numFound }}</span> results in <span id="time">{{ time }}</span>s)</small>
+    <small>(<span id="count-result">{{ numFound }}</span> results in <span id="time">0.00{{ time }}</span>s)</small>
+
     <div class="main">
-        {% for doc in docs %}
-            <h3 class="title"><a href={{doc['url'][0]}} target="_blank">
-            {{ doc['title'][0] }}
-            </a></h3>
-            <p class="content">{{ doc['content'][0] }}</p>
+        {% for item in items %}
+            <h3 class="title">
+                <a href={{docs[item]['url'][0]}} target="_blank">
+                    {{ docs[item]['title'][0].lstrip("'").rstrip("'") }}
+                </a>
+            </h3>
+           <small>{{ docs[item]['time'][0] }}</small>
+            <p class="content">
+                <span class="ct">{{ docs[item]['content'][0][0:1000] }}</span>
+                <span style="display: none;">{{ docs[item]['content'][0] }}</span>
+                <span class="text"><a href="#">See more...</a></span>
+            </p>
         {% endfor %}
     </div>
+    <div>
+        {{pagination.links}}
+    </div>
 </div>
+
+<div class="modal fade" role="dialog">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Content</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <p class="model-ct"></p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
 <script type="text/javascript" src="../static/js/jquery.js"></script>
 <script type="text/javascript" src="../static/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="../static/js/show.js"></script>
 </body>
 </html>
